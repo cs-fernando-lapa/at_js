@@ -9,27 +9,27 @@
 
 <body>
 
-<div id="container">
-  <div id="Cards">
-    <span id="botao"></span>
-    <span class="botaoReset">
-      <a onclick="app.c1.$ctrl.start();">Novo Jogo</a>
-    </span>
-   <span id="ult"> Tempo do último jogo:  </span>
-   <span id="ultimaEstat"></span>
-  <div id="showCards"></div>
-</div>
-<script>
-      var app = { };
-      app.getComponente = function (nome){
+  <div id="container">
+    <div id="Cards">
+      <span id="botao"></span>
+      <span class="botaoReset">
+        <a onclick="app.c1.$ctrl.start();">Novo Jogo</a>
+      </span>
+      <span id="ult"> Tempo do último jogo:  </span>
+      <span id="ultimaEstat"></span>
+      <div id="showCards"></div>
+    </div>
+    <script>
+    var app = { };
+    app.getComponente = function (nome){
       if( !app[nome]) {
-      app[nome] = { $ctrl:{} };
-    }
-    return app[nome];
-  };
-</script>
-<script src="js/index.js"></script>
-<script type="text/javascript"></script>
-<script type="text/javascript"></script>
-</body>
-</html>
+        app[nome] = { $ctrl:{} };
+      }
+      return app[nome];
+    };
+    </script>
+    <script src="js/index.js"></script>
+    <script type="text/javascript"></script>
+    <script type="text/javascript"></script>
+  </body>
+  </html>
