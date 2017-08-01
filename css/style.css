@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font: 18px Verdana;
+	color: black;
+  	background: (#fff);
+}
+#Cards {
+	margin: 0px auto;
+	width: 780px;
+}
+#botao {
+	text-align: center;
+	margin: 20px;
+	display: block;
+}
+#botao .botao, .botaoReset {
+	text-transform: uppercase;
+	padding: 5px 10px;
+	margin: 5px;
+	cursor: pointer;
+	background:  grey;
+}
+#botao .botao:hover, .botaoReset:hover {
+	background: #999;
+}
+.botaoReset {
+	margin: 34%;
+}
+#divCards {
+	z-index: 1;
+	margin: 10px 0 0;
+}
+#divCards div{
+	float: left;
+	width: 150px;
+	height: 150px;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid red;
+	cursor: pointer;
+	box-shadow: 0 1px 5px rgba(0,0,0,.5);
+	background-color: #ccc;
+	z-index: 2;
+}
+#divCards div img {
+	display: none;
+	z-index: 3;
+	width: 150px;
+	height: 150px;
+}
+
+#container{
+	width: 980px;
+	margin: 0 auto;
+}
+
+#teste {
+	float: left;
+}
