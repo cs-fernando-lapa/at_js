@@ -2,6 +2,10 @@
 	margin: 0;
 	padding: 0;
 }
+#container{
+	width: 980px;
+	margin: 0 auto;
+}
 body {
 	font: 18px Verdana;
 	color: black;
@@ -29,11 +33,11 @@ body {
 .botaoReset {
 	margin: 34%;
 }
-#divCards {
+#showCards {
 	z-index: 1;
 	margin: 10px 0 0;
 }
-#divCards div{
+#showCards div{
 	float: left;
 	width: 150px;
 	height: 150px;
@@ -45,18 +49,12 @@ body {
 	background-color: #ccc;
 	z-index: 2;
 }
-#divCards div img {
+#showCards div img {
 	display: none;
 	z-index: 3;
 	width: 150px;
 	height: 150px;
 }
-
-#container{
-	width: 980px;
-	margin: 0 auto;
-}
-
-#teste {
+#ult {
 	float: left;
 }

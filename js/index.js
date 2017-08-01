@@ -1,102 +1,96 @@
 (function(){
 
+	var boxImg = "";
+	var firstTurned = "";
+	var pairs = 0;
+	var counterTry = 0;
+	var counterError = 0;
+	let pairsTotal = 8;
+	var finalTime = 0;
+	var src = "#showCards";
+	var images = [
+		 "img/img1.png",
+		 "img/img2.png",
+		 "img/img3.png",
+		 "img/img4.png",
+		 "img/img5.png",
+		 "img/img6.png",
+		 "img/img7.png",
+		 "img/img8.png"
+	];
 
 	let c1 = app.getComponente('c1');
 	console.log(c1);
 	let $ctrl = c1.$ctrl;
 
-		var caixaImagem = "";
-		var primeiraCartaVirada = "";
-		var paresAchados = 0;
-		var contadorTentativas = 0;
-		var contadorErros = 0;
-		var contadorAcertos = 0;
-		let paresTotais = 8;
-		var tempototal = 0;
-		var Source = "#divCards";
-		var imagens = [
-		 	 "img/img1.png",
-			 "img/img2.png",
-		 	 "img/img3.png",
-		 	 "img/img4.png",
-		   "img/img5.png",
-		   "img/img6.png",
-		   "img/img7.png",
-		   "img/img8.png"
-		];
 
-			$ctrl.iniciar = function ResetarJogo() {
-			pegar();
-			Embaralhar();
-			$(Source + " div img").show(3000);
-			$(Source + " div img").hide(400);
-			$(Source + " div").css("visibility", "visible");
+
+			$ctrl.start = function ResetGame() {
+			getCards();
+			shuffle();
+			$(src + " div img").show(3000);
+			$(src + " div img").hide(400);
+			$(src + " div").css("visibility", "visible");
 			$("#success").remove();
-			caixaImagem = "";
-			primeiraCartaVirada = "";
-			paresAchados = 0;
+			boxImg = "";
+			firstTurned = "";
+			pairs = 0;
 			return false;
 		}
 
-		function calcTempo(a, b){
-			tempototal = b - a;
-			return tempototal;
+		function calcTime(a, b){
+			finalTime = b - a;
+			return finalTime;
 		}
 
 
 
-
-		function amostraCarta(divCartas) {
-			$("#"+divCartas).toggle();
-			$("#" + id + " img").fadeIn('fast');
-			}
-
-		function VirarCarta() {
-			var tempoInicio = performance.now();
+		function turnCard() {
+			var initTime = performance.now();
 			var id = $(this).attr("id");
 
 						if ($("#" + id + " img").is(":hidden")) {
-							$(Source + " div").unbind("click", VirarCarta);
+							$(src + " div").unbind("click", turnCard);
 							$("#" + id + " img").slideDown('fast');
-							if (primeiraCartaVirada == "") {
-								caixaImagem = id;
-								primeiraCartaVirada = $("#" + id + " img").attr("src");
+							if (firstTurned == "") {
+								boxImg = id;
+								firstTurned = $("#" + id + " img").attr("src");
 								setTimeout(function() {
-									$(Source + " div").bind("click", VirarCarta)
+									$(src + " div").bind("click", turnCard)
 								}, 400);
 							} else {
-								segundaCartaVirada = $("#" + id + " img").attr("src");
-								if (primeiraCartaVirada != segundaCartaVirada) {
+								secondTurned = $("#" + id + " img").attr("src");
+								if (firstTurned != secondTurned) {
 									setTimeout(function() {
 										$("#" + id + " img").slideUp('fast');
-										$("#" + caixaImagem + " img").slideUp('fast');
-										caixaImagem = "";
-										primeiraCartaVirada = "";
-										contadorErros++;
+										$("#" + boxImg + " img").slideUp('fast');
+										boxImg = "";
+										firstTurned = "";
+										counterError++;
 
 									}, 700);
 								} else {
 									$("#" + id + " img").parent().css("visibility", "visible");
-									$("#" + caixaImagem + " img").parent().css("visibility", "visible");
-									caixaImagem = "";
-									primeiraCartaVirada = "";
-									paresAchados++;
+									$("#" + boxImg + " img").parent().css("visibility", "visible");
+									boxImg = "";
+									firstTurned = "";
+									pairs++;
 								}
 								setTimeout(function() {
-									$(Source + " div").bind("click", VirarCarta)
+									$(src + " div").bind("click", turnCard)
 								}, 700);
 							}
 
-							if (contadorTentativas === parseInt(contadorTentativas,10)) {
+							if (counterTry === parseInt(counterTry,10)) {
 
 							}
-								if (paresAchados == paresTotais) {
-								 var tempoFinal = performance.now();
-								 calcTempo(tempoInicio, tempoFinal);
+								if (pairs == pairsTotal) {
+								 var endTime = performance.now();
+								 calcTime(initTime, endTime);
 
 
 								alert("Parabéns, você ganhou o jogo! Suas estatísticas: \n"
-									+ "\nTempo: " + tempototal + "segundos");
+									+ "\nTempo: " + finalTime + "Ms");
 
 								Save();
 
@@ -107,10 +101,10 @@
 		function RandomFunction(MaxValue, MinValue) {
 				return Math.round(Math.random() * (MaxValue - MinValue) + MinValue);
 			}
-		function Embaralhar() {
+		function shuffle() {
 
-			var ImgAll = $(Source).children();
-			var ImgThis = $(Source + " div:first-child");
+			var ImgAll = $(src).children();
+			var ImgThis = $(src + " div:first-child");
 			var ImgArr = new Array();
 
 			for (var i = 0; i < ImgAll.length; i++) {
@@ -118,7 +112,7 @@
 				ImgThis = ImgThis.next();
 			}
 
-				ImgThis = $(Source + " div:first-child");
+				ImgThis = $(src + " div:first-child");
 
 			for (var z = 0; z < ImgAll.length; z++) {
 			var RandomNumber = RandomFunction(0, ImgArr.length - 1);
@@ -134,19 +128,19 @@
 		$(function() {
 
 		for (var y = 1; y < 3 ; y++) {
-			$.each(imagens, function(i, val) {
-				$(Source).append("<div id=card" + y + i + "><img src=" + val + " />");
+			$.each(images, function(i, val) {
+				$(src).append("<div id=card" + y + i + "><img src=" + val + " />");
 			});
 		}
-			$(Source + " div").click(VirarCarta);
-			Embaralhar();
+			$(src + " div").click(turnCard);
+			shuffle();
 		});
 
 
 
 		function Save(){
 
-		var objLS = ("Tempo em ms :" + milisegundos);
+		var objLS = ("Tempo em ms :" + finalTime);
 		var tempo1 = JSON.parse(localStorage.getItem('objLS'));
 
 		if (tempo1 == null) {
@@ -158,7 +152,7 @@
 				}
 		}
 
-		function pegar(){
+		function getCards(){
 			var retrievedObject = JSON.parse(localStorage.getItem('objLS'));
 				$("#ultimaEstat").html("" + retrievedObject)
 				console.log('retrievedObject: ', retrievedObject)

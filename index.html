@@ -5,47 +5,31 @@
   <title>Jogo da memória</title>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
-  <script>
-        var app = { };
-        app.getComponente = function (nome){
-        if( !app[nome]) {
-        app[nome] = { $ctrl:{} };
-      }
-      return app[nome];
-    };
- </script>
-
-
 </head>
 
 <body>
 
 <div id="container">
   <div id="Cards">
-  <span id="botao">
-
-   </span>
-
+    <span id="botao"></span>
     <span class="botaoReset">
-      <a onclick="app.c1.$ctrl.iniciar();">Novo Jogo</a>
-
+      <a onclick="app.c1.$ctrl.start();">Novo Jogo</a>
     </span>
-
-    </span>
-
-    <span id="teste"> Tempo do último jogo:  </span>
-    <span id="ultimaEstat"></span>
-
-  <div id="divCards"></div>
+   <span id="ult"> Tempo do último jogo:  </span>
+   <span id="ultimaEstat"></span>
+  <div id="showCards"></div>
 </div>
-
-    <script src="js/index.js"></script>
-    <script type="text/javascript"></script>
-
-    <script type="text/javascript"></script>
-
-
-
+<script>
+      var app = { };
+      app.getComponente = function (nome){
+      if( !app[nome]) {
+      app[nome] = { $ctrl:{} };
+    }
+    return app[nome];
+  };
+</script>
+<script src="js/index.js"></script>
+<script type="text/javascript"></script>
+<script type="text/javascript"></script>
 </body>
 </html>
