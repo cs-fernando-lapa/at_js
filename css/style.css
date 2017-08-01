@@ -47,6 +47,10 @@ body {
 	cursor: pointer;
 	box-shadow: 0 1px 5px rgba(0,0,0,.5);
 	background-color: #ccc;
+	background-image: url("../img/backgroudCard.png");
+	background-position: center;
+	background-size: 140px 140px;
+	background-repeat: no-repeat;
 	z-index: 2;
 }
 #showCards div img {
