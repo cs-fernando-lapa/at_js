@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da memória</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 
-  </body>
+  <script>
+        var app = { };
+        app.getComponente = function (nome){
+        if( !app[nome]) {
+        app[nome] = { $ctrl:{} };
+      }
+      return app[nome];
+    };
+ </script>
+
+
+</head>
+
+<body>
+
+<div id="container">
+  <div id="imagensCartas">
+  <span id="spanBotoes">
+    <span class="botao">
+      <span id="contadorClicks">0</span>
+      Clicks |
+
+      <span id="contadorErros">0</span>
+
+      Erros |
+      <span id="contadorAcertos">0</span>
+
+      Acertos |
+
+      <span id="contadorTentativas">0</span>
+
+      Tentativas
+    </span>
+   </span>
+
+    <span class="botaoReset">
+      <a onclick="app.c1.$ctrl.iniciar();">Novo Jogo</a>
+
+    </span>
+
+    </span>
+
+    <span id="teste"> Estatística do último jogo ganho: </span>
+    <span id="ultimaEstat"></span>
+
+  <div id="divCartas"></div>
+</div>
+
+    <script src="js/index.js"></script>
+    <script type="text/javascript"></script>
+
+    <script type="text/javascript"></script>
+
+
+
+</body>
 </html>
